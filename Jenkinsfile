@@ -10,7 +10,7 @@ pipeline {
     stage("Mvn Compile") {
       steps {
         echo "Compiling..."
-        sh 'mvn package'
+        sh 'mvnw compile'
       }
      }
    }
