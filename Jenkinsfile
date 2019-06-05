@@ -7,13 +7,12 @@ pipeline {
     }
   }
     // Kompiluje plik
-    stage("Compile") {
-      steps {
-        echo "Compiling the file..."
-        sh "./mvnw compile"       
+    stage("Mvn Package") {
+      def mvnHome = tool name: 'Maven', type: 'maven'
+      def mvnCMD = "${mvnHome}/bin/mvn"
+        sh "${mvnCMD} clean package"       
       }
     }
-  }
 }
     /* Przeprowadzam testy jednostkowe
     stage("JUnit Test") {
