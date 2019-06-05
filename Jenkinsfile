@@ -1,14 +1,21 @@
 pipeline {
   agent any
   stages {
+    stage ("Checkout") {
+    steps {
+      git.url: 'https://github.com/lfarul/EmployeeRegistryH2.git'
+    }
+  }
     // Kompiluje plik
     stage("Compile") {
       steps {
         echo "Compiling the file..."
-        sh 'javac TempMethod2.java'       
+        sh "./mvnw compile"       
+      }
+    }
   }
 }
-    // Przeprowadzam testy jednostkowe
+    /* Przeprowadzam testy jednostkowe
     stage("JUnit Test") {
       steps {
         echo "Testing the file..."
@@ -52,3 +59,5 @@ pipeline {
     //}
   }
 }
+*/
+ 
