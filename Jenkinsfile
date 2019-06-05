@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage ("Checkout") {
     steps {
-      git url: 'https://github.com/lfarul/EmployeeRegistryH2.git'
+      git credentialsId: 'git-creds', url: 'https://github.com/lfarul/EmployeeRegistryH2'
     }
   }
     // Kompiluje plik
