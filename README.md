@@ -5,3 +5,6 @@ Working on compiling spring boot maven app, still working on it. Removed enironm
 
 Update Jenkins config file - # make jenkins listen on IPv4 address
 #JAVA_ARGS="-Xmx2048m -XX:MaxPermSize=512m -Djava.net.preferIPv4Stack=true"
+
+#adding it to catalina.sh
+JAVA_HOME = /usr/lib/jvm/java-8-openjdk-amd64/jre/bin
