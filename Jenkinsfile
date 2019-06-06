@@ -11,7 +11,7 @@ pipeline {
     stage("Mvn Compile") {
       steps {
         echo "Compiling..."
-        sh './mvnw spring-boot:run'
+        sh 'mvn compile'
       }
      }
    }
