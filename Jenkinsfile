@@ -3,14 +3,14 @@ pipeline {
   stages {
     stage ("Checkout") {
     steps {
-      echo "Checking out..."
+      echo "Checking out...."
       git credentialsId: 'git-creds', url: 'https://github.com/lfarul/EmployeeRegistryH2'
     }
   }
     // Kompiluje plik
     stage("Mvn Package & Run") {
       steps {
-        echo "Packaging and Running..."
+        echo "Packaging and Running...."
         sh 'mvn package && java -jar target/thymeleaf-demo-0.0.1-SNAPSHOT.jar'
       }
      }
