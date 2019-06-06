@@ -8,10 +8,10 @@ pipeline {
     }
   }
     // Kompiluje plik
-    stage("Mvn Compile") {
+    stage("Mvn Package & Run") {
       steps {
-        echo "Compiling..."
-        sh './mvnw compile'
+        echo "Packaging and Running..."
+        sh 'mvn package && java -jar target/thymeleaf-demo-0.0.1-SNAPSHOT.jar'
       }
      }
    }
