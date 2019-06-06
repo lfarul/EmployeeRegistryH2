@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage ("Checkout") {
     steps {
+      echo "Checking out..."
       git credentialsId: 'git-creds', url: 'https://github.com/lfarul/EmployeeRegistryH2'
     }
   }
@@ -10,7 +11,7 @@ pipeline {
     stage("Mvn Compile") {
       steps {
         echo "Compiling..."
-        sh './mvnw compile'
+        sh 'mvn compile'
       }
      }
    }
