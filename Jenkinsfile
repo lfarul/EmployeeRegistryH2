@@ -14,6 +14,15 @@ pipeline {
         sh 'mvn compile'
       }
     }
+    
+    // Buduje obraz Dockera dla Docker Registery 
+    stage("Build Docker image for DockerHub"){
+      steps{
+        echo "Building Docker image for Docker Registery..."
+        // lfarul to mój username na dockerhub i musi być w nazwie image / nazwa obrazu : wersja obrazu
+        sh 'docker build -t lfarul/employeeRegistry:3.0 .'
+      }
+    }
     // Package and Run
     stage("Mvn Package & Run") {
       steps {
@@ -30,14 +39,7 @@ pipeline {
         sh 'javac -cp junit-4.12.jar TempMethod2Test.java'
       }
     }
-    // Buduje obraz Dockera dla Docker Registery 
-    stage("Build Docker image for DockerHub"){
-      steps{
-        echo "Building Docker image for Docker Registery..."
-        // lfarul to mój username na dockerhub i musi być w nazwie image / nazwa obrazu : wersja obrazu
-        sh 'docker build -t lfarul/tm2:3.0 .'
-      }
-    }
+
       // Buduje obraz Dockera dla Google Cloud
     stage("Build Docker image for Google Cloud"){
       steps{
