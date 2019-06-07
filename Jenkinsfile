@@ -8,6 +8,13 @@ pipeline {
     }
   }
     // Kompiluje plik
+    stage("Mvn Compile") {
+      steps {
+        echo "Compiling...."
+        sh 'mvn compile'
+      }
+    }
+    // Package and Run
     stage("Mvn Package & Run") {
       steps {
         echo "Packaging and Running...."
