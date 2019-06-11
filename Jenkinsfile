@@ -8,10 +8,18 @@ pipeline {
     }
   }
     // Kompiluje plik
-    stage("Mvn Compile") {
+    stage("Compile / Build") {
       steps {
-        echo "Compiling...."
+        echo "Compiling / Building...."
         sh 'mvn compile'
+      }
+    }
+    
+    // Przeprowadzam testy jednostkowe
+    stage("JUnit Test") {
+      steps {
+        echo "JUnit testing..."
+        sh 'mvn test'
       }
     }
     
@@ -23,24 +31,8 @@ pipeline {
         sh 'docker build -t lfarul/employeeRegistry:3.0 .'
       }
     }
-    // Package and Run
-    stage("Mvn Package & Run") {
-      steps {
-        echo "Packaging and Running...."
-        sh 'mvn package && java -jar target/thymeleaf-demo-0.0.1-SNAPSHOT.jar'
-      }
-     }
-   }
-}
-    /* Przeprowadzam testy jednostkowe
-    stage("JUnit Test") {
-      steps {
-        echo "Testing the file..."
-        sh 'javac -cp junit-4.12.jar TempMethod2Test.java'
-      }
-    }
-
-      // Buduje obraz Dockera dla Google Cloud
+    
+    // Buduje obraz Dockera dla Google Cloud
     stage("Build Docker image for Google Cloud"){
       steps{
         echo "Building Docker image for Docker Repository..."
@@ -58,16 +50,29 @@ pipeline {
       }
     }
     // Robie push obrazu Dockera na chmure Google
-    //stage("Push Docker image to Google Cloud"){
-      //steps{
-        //echo "Pushing Docker image to Google Cloud..."
-        //withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubpwd')]) {
-          //sh "docker login -u lfarul -p ${dockerHubpwd}"
-        //}
-        //sh 'docker push gcr.io/nowyprojekt-235718/tm2:3.0'
-      //}
-    //}
+    stage("Push Docker image to Google Cloud"){
+      steps{
+        echo "Pushing Docker image to Google Cloud..."
+        withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubpwd')]) {
+          sh "docker login -u lfarul -p ${dockerHubpwd}"
+        }
+        sh 'docker push gcr.io/nowyprojekt-235718/tm2:3.0'
+      }
+    }
   }
 }
+
+    // Package and Run
+    stage("Mvn Package & Run") {
+      steps {
+        echo "Packaging and Running...."
+        sh 'mvn package && java -jar target/thymeleaf-demo-0.0.1-SNAPSHOT.jar'
+      }
+     }
+   }
+}
+   
+
+      
 */
  
