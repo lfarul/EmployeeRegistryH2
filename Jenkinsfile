@@ -12,7 +12,7 @@ pipeline {
     // Kompiluje plik
     stage("Compile / Build") {
       steps {
-        echo "Compiling / Building...."
+        echo "Compiling / Building..."
         sh 'mvn compile'
       }
     }
@@ -24,6 +24,14 @@ pipeline {
         sh 'mvn test'
       }
     }
+    
+    //Pakuje aplikacje do.jar
+    stage("Package") {
+      steps {
+        echo "Packaging..."
+        sh 'mvn package'
+      }
+     }
 
     // Buduje obraz Dockera dla Docker Registery 
     stage("Build Docker image for DockerHub"){
@@ -78,4 +86,3 @@ pipeline {
 }
 
  */
-
