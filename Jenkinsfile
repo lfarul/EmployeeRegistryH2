@@ -60,18 +60,15 @@ pipeline {
         sh 'docker build -t gcr.io/nowyprojekt-235718/employeeregistry:1.0 .'
       }
     }
-  }
-}
-
-    /*
+    
     // Robie push obrazu Dockera na chmure Google
     stage("Push Docker image to Google Cloud"){
       steps{
         echo "Pushing Docker image to Google Cloud..."
-        withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubpwd')]) {
+        withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
           sh "docker login -u lfarul -p ${dockerHubpwd}"
         }
-        sh 'docker push gcr.io/nowyprojekt-235718/employeeRegistry:1.0'
+        sh 'docker push gcr.io/nowyprojekt-235718/employeeregistry:1.0'
       }
     }
   }
