@@ -33,19 +33,19 @@ pipeline {
       }
      }
 
-    // Buduje obraz Dockera dla Docker Registery 
-    stage("Build Docker image for DockerHub"){
+    // Buduje obraz Dockera dla Docker Registry 
+    stage("Build Docker image for Docker Hub"){
       steps{
-        echo "Building Docker image for Docker Registery..."
+        echo "Building Docker image for Docker Registry..."
         // lfarul to mój username na dockerhub i musi być w nazwie image / nazwa obrazu : wersja obrazu
         sh 'docker build -t lfarul/employeeregistry:1.0 .'
       }
     }
     
     // Robie push obrazu Dockera na chmure Dockera
-    stage("Push Docker image to Docker Registery"){
+    stage("Push Docker image to Docker Registry"){
       steps{
-        echo "Pushing Docker image to Docker Registery..."
+        echo "Pushing Docker image to Docker Registry..."
         withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
           sh "docker login -u lfarul -p ${dockerHubPwd}"
         }
