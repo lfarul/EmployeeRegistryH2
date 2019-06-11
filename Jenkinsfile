@@ -1,12 +1,14 @@
 pipeline {
   agent any
   stages {
-    stage ("Checkout") {
+    
+    /*stage ("Checkout") {
     steps {
       echo "Checking out...."
       git credentialsId: 'git-creds', url: 'https://github.com/lfarul/EmployeeRegistryH2'
     }
   }
+  */
     // Kompiluje plik
     stage("Compile / Build") {
       steps {
@@ -22,6 +24,8 @@ pipeline {
         sh 'mvn test'
       }
     }
+  }
+}
     
     /*
     // Buduje obraz Dockera dla Docker Registery 
