@@ -24,10 +24,7 @@ pipeline {
         sh 'mvn test'
       }
     }
-  }
-}
-    
-    /*
+
     // Buduje obraz Dockera dla Docker Registery 
     stage("Build Docker image for DockerHub"){
       steps{
@@ -36,7 +33,10 @@ pipeline {
         sh 'docker build -t lfarul/employeeRegistry:1.0 .'
       }
     }
+  }
+}
     
+    /*
     // Buduje obraz Dockera dla Google Cloud
     stage("Build Docker image for Google Cloud"){
       steps{
