@@ -52,18 +52,18 @@ pipeline {
         sh 'docker push lfarul/employeeregistry:1.0'
       }
     }    
-  }
-}
-    
-    /*
+
     // Buduje obraz Dockera dla Google Cloud
     stage("Build Docker image for Google Cloud"){
       steps{
-        echo "Building Docker image for Docker Repository..."
-        sh 'docker build -t gcr.io/nowyprojekt-235718/employeeRegistry:1.0 .'
+        echo "Building Docker image for Google Cloud..."
+        sh 'docker build -t gcr.io/nowyprojekt-235718/employeeregistry:1.0 .'
       }
-    }  
+    }
+  }
+}
 
+    /*
     // Robie push obrazu Dockera na chmure Google
     stage("Push Docker image to Google Cloud"){
       steps{
