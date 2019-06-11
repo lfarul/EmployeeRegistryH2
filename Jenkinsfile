@@ -25,7 +25,7 @@ pipeline {
       }
     }
     
-    //Pakuje aplikacje do.jar
+    // Pakuje aplikacje do pliku .jar
     stage("Package") {
       steps {
         echo "Packaging..."
@@ -41,6 +41,17 @@ pipeline {
         sh 'docker build -t lfarul/employeeregistry:1.0 .'
       }
     }
+    
+    // Robie push obrazu Dockera na chmure Dockera
+    stage("Push Docker image to Docker Registery"){
+      steps{
+        echo "Pushing Docker image to Docker Registery..."
+        withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
+          sh "docker login -u lfarul -p ${dockerHubPwd}"
+        }
+        sh 'docker push lfarul/employeeregistry:1.0'
+      }
+    }    
   }
 }
     
@@ -52,16 +63,7 @@ pipeline {
         sh 'docker build -t gcr.io/nowyprojekt-235718/employeeRegistry:1.0 .'
       }
     }  
-    // Robie push obrazu Dockera na chmure Dockera
-    stage("Push Docker image to Docker Registery"){
-      steps{
-        echo "Pushing Docker image to Docker Registery..."
-        withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubpwd')]) {
-          sh "docker login -u lfarul -p ${dockerHubpwd}"
-        }
-        sh 'docker push lfarul/employeeRegistry:1.0'
-      }
-    }
+
     // Robie push obrazu Dockera na chmure Google
     stage("Push Docker image to Google Cloud"){
       steps{
