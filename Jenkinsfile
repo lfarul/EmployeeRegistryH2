@@ -23,12 +23,13 @@ pipeline {
       }
     }
     
+    /*
     // Buduje obraz Dockera dla Docker Registery 
     stage("Build Docker image for DockerHub"){
       steps{
         echo "Building Docker image for Docker Registery..."
         // lfarul to mój username na dockerhub i musi być w nazwie image / nazwa obrazu : wersja obrazu
-        sh 'docker build -t lfarul/employeeRegistry:3.0 .'
+        sh 'docker build -t lfarul/employeeRegistry:1.0 .'
       }
     }
     
@@ -36,7 +37,7 @@ pipeline {
     stage("Build Docker image for Google Cloud"){
       steps{
         echo "Building Docker image for Docker Repository..."
-        sh 'docker build -t gcr.io/nowyprojekt-235718/tm2:3.0 .'
+        sh 'docker build -t gcr.io/nowyprojekt-235718/employeeRegistry:1.0 .'
       }
     }  
     // Robie push obrazu Dockera na chmure Dockera
@@ -46,7 +47,7 @@ pipeline {
         withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubpwd')]) {
           sh "docker login -u lfarul -p ${dockerHubpwd}"
         }
-        sh 'docker push lfarul/tm2:3.0'
+        sh 'docker push lfarul/employeeRegistry:1.0'
       }
     }
     // Robie push obrazu Dockera na chmure Google
@@ -56,13 +57,13 @@ pipeline {
         withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubpwd')]) {
           sh "docker login -u lfarul -p ${dockerHubpwd}"
         }
-        sh 'docker push gcr.io/nowyprojekt-235718/tm2:3.0'
+        sh 'docker push gcr.io/nowyprojekt-235718/employeeRegistry:1.0'
       }
     }
   }
 }
 
-    // Package and Run
+    /* Package and Run
     stage("Mvn Package & Run") {
       steps {
         echo "Packaging and Running...."
@@ -71,8 +72,5 @@ pipeline {
      }
    }
 }
-   
 
-      
-*/
- 
+ */
