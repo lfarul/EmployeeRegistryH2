@@ -65,7 +65,7 @@ pipeline {
     stage("Push Docker image to Google Cloud"){
       steps{
         echo "Pushing Docker image to Google Cloud..."
-        sh 'gcloud push gcr.io/nowyprojekt-235718/employeeregistry:1.0'
+        sh 'gcloud docker push gcr.io/nowyprojekt-235718/employeeregistry:1.0'
       }
     }
   }
