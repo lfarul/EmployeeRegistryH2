@@ -60,10 +60,8 @@ pipeline {
         sh 'docker build -t gcr.io/nowyprojekt-235718/employeeregistry:1.0 .'
       }
     }
-  }
-}
     
-    /* Robie push obrazu Dockera na chmure Google
+    //Robie push obrazu Dockera na chmure Google
     stage("Push Docker image to Google Cloud"){
       steps{
         echo "Pushing Docker image to Google Cloud..."
