@@ -21,7 +21,7 @@ pipeline {
     stage("JUnit Test") {
       steps {
         echo "JUnit testing..."
-        sh 'mvn test'
+        sh 'mvn -Dtest=ThymeleafDemoApplicationTests test'
       }
     }
     
