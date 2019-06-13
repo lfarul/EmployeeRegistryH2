@@ -1,4 +1,4 @@
-FROM java:8
+FROM 11-jdk-alpine 
 
 # Add Maintainer Info
 LABEL maintainer="lfarulewski@yahoo.com"
