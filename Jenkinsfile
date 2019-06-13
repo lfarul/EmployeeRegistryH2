@@ -66,8 +66,10 @@ pipeline {
       steps{
         echo "Pushing Docker image to Google Cloud..."
         withCredentials([file(credentialsId: 'GCR-pwd', variable: 'GCR-pwd')]){
-        sh 'docker push gcr.io/nowyprojekt-235718/employeeregistry:1.0'
+          sh "docker login -u lfarul -p ${dockerHubPwd}"     
         }
+        sh 'docker push gcr.io/nowyprojekt-235718/employeeregistry:1.0'
+        
       }
     }
   }
