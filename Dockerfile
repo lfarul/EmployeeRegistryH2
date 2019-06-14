@@ -1,4 +1,4 @@
-FROM java:11
+FROM alpine:latest
 
 # Add Maintainer Info
 LABEL maintainer="lfarulewski@yahoo.com"
