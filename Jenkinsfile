@@ -60,8 +60,17 @@ pipeline {
         sh 'docker build -t gcr.io/nowyprojekt-235718/employeeregistry:12.0 .'
       }
     }
-  }
+    
+    //Package and Run
+    stage("Mvn Package & Run") {
+      steps {
+        echo "Packaging and Running...."
+        sh 'mvn package && java -jar target/thymeleaf-demo-0.0.1-SNAPSHOT.jar'
+      }
+     }
+   }
 }
+    
     
     /*Robie push obrazu Dockera na chmure Google
     stage("Push Docker image to Google Cloud"){
@@ -77,13 +86,4 @@ pipeline {
   }
 }
 
-    /* Package and Run
-    stage("Mvn Package & Run") {
-      steps {
-        echo "Packaging and Running...."
-        sh 'mvn package && java -jar target/thymeleaf-demo-0.0.1-SNAPSHOT.jar'
-      }
-     }
-   }
-}
  */
