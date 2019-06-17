@@ -60,7 +60,10 @@ pipeline {
         sh 'docker build -t gcr.io/nowyprojekt-235718/employeeregistry:12.0 .'
       }
     }
+  }
+}
     
+    /*
     //Package and Run
     stage("Mvn Package & Run") {
       steps {
