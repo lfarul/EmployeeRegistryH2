@@ -48,7 +48,7 @@ pipeline {
       steps{
         echo "Building Docker image for Docker Registry..."
         // lfarul to mój username na dockerhub i musi być w nazwie image / nazwa obrazu : wersja obrazu
-        sh 'docker build -t lfarul/employeeregistry:18.0 .'
+        sh 'docker build -t lfarul/employeeregistry:19.0 .'
       }
     }
     
@@ -59,7 +59,7 @@ pipeline {
         withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
           sh "docker login -u lfarul -p ${dockerHubPwd}"
         }
-        sh 'docker push lfarul/employeeregistry:18.0'
+        sh 'docker push lfarul/employeeregistry:19.0'
       }
     }    
 
@@ -67,7 +67,7 @@ pipeline {
     stage("Build Docker image for Google Cloud"){
       steps{
         echo "Building Docker image for Google Cloud..."
-        sh 'docker build -t gcr.io/nowyprojekt-235718/employeeregistry:18.0 .'
+        sh 'docker build -t gcr.io/nowyprojekt-235718/employeeregistry:19.0 .'
       }
     }
     
@@ -75,7 +75,7 @@ pipeline {
      stage("Run Docker container"){
       steps{
         echo "Running Docker container"
-        sh 'docker run -d -p 8282:9000  lfarul/employeeregistry:18.0' 
+        sh 'docker run -d -p 8282:9000  lfarul/employeeregistry:19.0' 
       }
     }
   }
