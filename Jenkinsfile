@@ -48,7 +48,7 @@ pipeline {
       steps{
         echo "Building Docker image for Docker Registry..."
         // lfarul to mój username na dockerhub i musi być w nazwie image / nazwa obrazu : wersja obrazu
-        sh 'docker build -t lfarul/employeeregistry:17.0 .'
+        sh 'docker build -t lfarul/employeeregistry:18.0 .'
       }
     }
     
